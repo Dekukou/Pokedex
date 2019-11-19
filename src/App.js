@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './pokeball.png';
 import './App.css';
 import {Table, Thead, Tbody, Tr, Th, Td} from 'react-super-responsive-table'
 import Grid from '@material-ui/core/Grid';
@@ -41,12 +40,12 @@ class App extends Component {
 
     componentDidMount() {
         fetch('https://pokeapi.co/api/v2/pokemon/?limit=' + this.state.limit)
-        .then(results => {
-            return results.json();
-        }).then(data => {
+            .then(results => {
+                return results.json();
+            }).then(data => {
             var tmp = [];
             data.results.map((pokemon, i) => {
-                if (i < this.state.my_limit){
+                if (i < this.state.my_limit) {
                     tmp.push(pokemon)
                 }
             })
@@ -172,62 +171,79 @@ class App extends Component {
                 return (
                     <div className="App">
                         <header className="App-header">
-                            <p onClick={() => this.setState({pokemon: false, last_evolve: [], first_evolve: []})}>Back</p>
+                            <p onClick={() => this.setState({
+                                pokemon: false,
+                                last_evolve: [],
+                                first_evolve: []
+                            })}>Back</p>
                             <img
-                                src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + this.state.pokemonID + '.png'} alt={this.state.selectedPokemon.name}/>
+                                src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + this.state.pokemonID + '.png'}
+                                alt={this.state.selectedPokemon.name}/>
                             <p>{this.state.selectedPokemon.name}</p>
                             <td>
-                            {this.state.infos.types.map((type, i) => {
-                                return (
-                                    <img style={{width: '60px', height:'60px'}}
-                                         src={'./Types/' + type.type.name + '.png'}/>
-                                )
-                            })}
+                                {this.state.infos.types.map((type, i) => {
+                                    return (
+                                        <img style={{width: '60px', height: '60px'}}
+                                             src={'./Types/' + type.type.name + '.png'}/>
+                                    )
+                                })}
                             </td>
                             <Table>
                                 <Tbody>
-                                    <Tr>
-                                        {this.state.first_evolve.length !== 0 ?
-                                            <td>
-                                                <div onClick={() => this.select(this.state.base.id)}>
-                                                    <img
-                                                        src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + this.state.base.id + '.png'}
-                                                        alt={this.state.base.name}/>
-                                                    <p>{this.state.base.name}</p>
-                                                </div>
-                                            </td>
+                                <Tr>
+                                    {this.state.first_evolve.length !== 0 ?
+                                        <td>
+                                            <div onClick={() => this.select(this.state.base.id)}>
+                                                <img
+                                                    src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + this.state.base.id + '.png'}
+                                                    alt={this.state.base.name}/>
+                                                <p>{this.state.base.name}</p>
+                                            </div>
+                                        </td>
                                         : null}
-                                        <td style={ this.state.first_evolve.length > 1 ? {'height': '400px', 'overflow':'scroll', 'display': 'block'} : {overflow: 'none'}}>
+                                    <td style={this.state.first_evolve.length > 1 ? {
+                                        'height': '400px',
+                                        'overflow': 'scroll',
+                                        'display': 'block'
+                                    } : {overflow: 'none'}}>
                                         {this.state.first_evolve.map((pokemon, i) => {
                                             return (
                                                 <div key={pokemon.name} onClick={() => this.select(pokemon.id)}>
-                                                    <img src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + pokemon.id + '.png'} alt={pokemon.name}/>
+                                                    <img
+                                                        src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + pokemon.id + '.png'}
+                                                        alt={pokemon.name}/>
                                                     <p>{pokemon.name}</p>
                                                 </div>
                                             )
                                         })}
-                                        </td>
-                                        <td style={ this.state.last_evolve.length > 1 ? {'height': '400px', 'overflow':'scroll', 'display': 'block'} : {overflow: 'none'}}>
+                                    </td>
+                                    <td style={this.state.last_evolve.length > 1 ? {
+                                        'height': '400px',
+                                        'overflow': 'scroll',
+                                        'display': 'block'
+                                    } : {overflow: 'none'}}>
                                         {this.state.last_evolve.map((pokemon, i) => {
-                                                return (
-                                                    <div key={pokemon.name} onClick={() => this.select(pokemon.id)}>
-                                                            <img src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + pokemon.id + '.png'} alt={pokemon.name}/>
-                                                            <p>{pokemon.name}</p>
-                                                    </div>
-                                                )
-                                            })}
-                                        </td>
-                                    </Tr>
+                                            return (
+                                                <div key={pokemon.name} onClick={() => this.select(pokemon.id)}>
+                                                    <img
+                                                        src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + pokemon.id + '.png'}
+                                                        alt={pokemon.name}/>
+                                                    <p>{pokemon.name}</p>
+                                                </div>
+                                            )
+                                        })}
+                                    </td>
+                                </Tr>
                                 </Tbody>
                             </Table>
-                            <div style={{'height': '400px', 'overflow':'scroll', 'display': 'block'}}>
+                            <div style={{'height': '400px', 'overflow': 'scroll', 'display': 'block'}}>
                                 {this.state.infos.moves.map((move, i) => {
                                     return (
                                         <p key={i}>{move.move.name}</p>
                                     )
                                 })}
                             </div>
-                            <div style={{'height': '400px', 'overflow':'scroll', 'display': 'block'}}>
+                            <div style={{'height': '400px', 'overflow': 'scroll', 'display': 'block'}}>
                                 {this.state.infos.held_items.map((item, i) => {
                                     return (
                                         <p key={i}>{item.item.name}</p>
@@ -246,42 +262,47 @@ class App extends Component {
                                 <p onClick={() => this.next(this.state.offset - this.state.my_limit, this.state.my_limit, this.state.data)}>PREV</p>
                                 : null}
                             {this.state.offset !== 800 ?
-                            <p onClick={() => this.next(this.state.offset + this.state.my_limit, this.state.my_limit, this.state.data)}>NEXT</p>
+                                <p onClick={() => this.next(this.state.offset + this.state.my_limit, this.state.my_limit, this.state.data)}>NEXT</p>
                                 : null}
-                            <Grid container spacing={4} style={{ alignItems: 'center', justifyContent: 'center', display: 'flex'}}>
+                            <Grid container spacing={4}
+                                  style={{alignItems: 'center', justifyContent: 'center', display: 'flex'}}>
                                 {this.state.results.map((pokemon, i) => {
-                                        i = i + this.state.offset + 1;
-                                            return (
-                                                <Grid item xs={2.5} spacing={1} key={pokemon.url} onClick={() => this.select(i)} style={{ alignItems: 'center', justifyContent: 'center', display: 'flex'}}>
-                                                    <div style={{border: '1px solid', borderColor: pokemon.infos !== undefined ? pokemon.infos.types[0].color : null}}>
-                                                        <img key={pokemon.name}
-                                                             src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + i + '.png'}
-                                                             alt={pokemon.name}/>
-                                                    {pokemon.infos !== undefined ?
-                                                        <Td style={{width: '300px'}}>
-                                                            <p key={i}>{i} - {pokemon.name}</p>
-                                                            {pokemon.infos !== undefined ?
-                                                                (
-                                                                    <div>
-                                                                        {pokemon.infos.types.map((type, i) => {
-                                                                            return (
-                                                                                <img style={{
-                                                                                    width: '60px',
-                                                                                    height: '60px'
-                                                                                }}
-                                                                                     src={'./Types/' + type.type.name + '.png'}/>
-                                                                            )
-                                                                        })}
-                                                                    </div>
-                                                                ) : null
-                                                            }
-                                                        </Td>
-                                                        :
-                                                        null
-                                                    }
-                                                    </div>
-                                                </Grid>
-                                            )
+                                    i = i + this.state.offset + 1;
+                                    return (
+                                        <Grid item xs={2.5} spacing={1} key={pokemon.url} onClick={() => this.select(i)}
+                                              style={{alignItems: 'center', justifyContent: 'center', display: 'flex'}}>
+                                            <div style={{
+                                                border: '1px solid',
+                                                borderColor: pokemon.infos !== undefined ? pokemon.infos.types[0].color : null
+                                            }}>
+                                                <img key={pokemon.name}
+                                                     src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + i + '.png'}
+                                                     alt={pokemon.name}/>
+                                                {pokemon.infos !== undefined ?
+                                                    <Td style={{width: '300px'}}>
+                                                        <p key={i}>{i} - {pokemon.name}</p>
+                                                        {pokemon.infos !== undefined ?
+                                                            (
+                                                                <div>
+                                                                    {pokemon.infos.types.map((type, i) => {
+                                                                        return (
+                                                                            <img style={{
+                                                                                width: '60px',
+                                                                                height: '60px'
+                                                                            }}
+                                                                                 src={'./Types/' + type.type.name + '.png'}/>
+                                                                        )
+                                                                    })}
+                                                                </div>
+                                                            ) : null
+                                                        }
+                                                    </Td>
+                                                    :
+                                                    null
+                                                }
+                                            </div>
+                                        </Grid>
+                                    )
                                 })}
                             </Grid>
                             <br/>
