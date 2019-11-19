@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import {Table, Thead, Tbody, Tr, Th, Td} from 'react-super-responsive-table'
 import Grid from '@material-ui/core/Grid';
-// import FaIconPack from 'react-icons/lib/fa'
+import {FaAngleDoubleLeft, FaAngleDoubleRight, FaArrowCircleLeft} from "react-icons/fa";
 
 import {Component} from 'react';
 
@@ -171,11 +171,13 @@ class App extends Component {
                 return (
                     <div className="App">
                         <header className="App-header">
-                            <p onClick={() => this.setState({
+                            <br/>
+                            <FaArrowCircleLeft onClick={() => this.setState({
                                 pokemon: false,
                                 last_evolve: [],
                                 first_evolve: []
-                            })}>Back</p>
+                            })}
+                            style={{padding: '50px'}}/>
                             <img
                                 src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + this.state.pokemonID + '.png'}
                                 alt={this.state.selectedPokemon.name}/>
@@ -236,20 +238,22 @@ class App extends Component {
                                 </Tr>
                                 </Tbody>
                             </Table>
-                            <div style={{'height': '400px', 'overflow': 'scroll', 'display': 'block'}}>
+                            <div style={{'height': '200px', 'overflow': 'scroll', 'display': 'block'}}>
                                 {this.state.infos.moves.map((move, i) => {
                                     return (
                                         <p key={i}>{move.move.name}</p>
                                     )
                                 })}
                             </div>
-                            <div style={{'height': '400px', 'overflow': 'scroll', 'display': 'block'}}>
+                            {this.state.infos.held_items.length !== 0 ?
+                            <div style={{'height': '150px', 'overflow': 'scroll', 'display': 'block'}}>
                                 {this.state.infos.held_items.map((item, i) => {
                                     return (
                                         <p key={i}>{item.item.name}</p>
                                     )
                                 })}
                             </div>
+                                : null }
                         </header>
                     </div>
                 )
@@ -257,13 +261,16 @@ class App extends Component {
                 return (
                     <div className="App">
                         <header className="App-header">
+                            <br/>
                             <img src={'./logo.png'} className="App-logo" alt="logo" style={{height: '250px'}}/>
+                            <div>
                             {this.state.offset !== 0 ?
-                                <p onClick={() => this.next(this.state.offset - this.state.my_limit, this.state.my_limit, this.state.data)}>PREV</p>
+                                <FaAngleDoubleLeft onClick={() => this.next(this.state.offset - this.state.my_limit, this.state.my_limit, this.state.data)} style={{padding: '50px'}}/>
                                 : null}
                             {this.state.offset !== 800 ?
-                                <p onClick={() => this.next(this.state.offset + this.state.my_limit, this.state.my_limit, this.state.data)}>NEXT</p>
+                                <FaAngleDoubleRight onClick={() => this.next(this.state.offset + this.state.my_limit, this.state.my_limit, this.state.data)} style={{padding: '50px'}}/>
                                 : null}
+                            </div>
                             <Grid container spacing={4}
                                   style={{alignItems: 'center', justifyContent: 'center', display: 'flex'}}>
                                 {this.state.results.map((pokemon, i) => {
@@ -280,7 +287,7 @@ class App extends Component {
                                                      alt={pokemon.name}/>
                                                 {pokemon.infos !== undefined ?
                                                     <Td style={{width: '300px'}}>
-                                                        <p key={i}>{i} - {pokemon.name}</p>
+                                                        <p key={i}>{i} - {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</p>
                                                         {pokemon.infos !== undefined ?
                                                             (
                                                                 <div>
