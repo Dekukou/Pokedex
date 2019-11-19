@@ -2,6 +2,8 @@ import React from 'react';
 import logo from './pokeball.png';
 import './App.css';
 import {Table, Thead, Tbody, Tr, Th, Td} from 'react-super-responsive-table'
+import Grid from '@material-ui/core/Grid';
+// import FaIconPack from 'react-icons/lib/fa'
 
 import {Component} from 'react';
 
@@ -58,7 +60,6 @@ class App extends Component {
     }
 
     loadInfos(offset, limit, data) {
-        console.log(offset, limit, data)
         data.map((pokemon, i) => {
             i = i + offset + 1;
             if (i <= offset + limit && i >= offset) {
@@ -148,7 +149,6 @@ class App extends Component {
                     .then(infos => {
                         return infos.json();
                     }).then(infos => {
-                        console.log(infos.moves)
                     this.setState({
                         infos: infos,
                         family: data2,
@@ -179,19 +179,24 @@ class App extends Component {
                             <td>
                             {this.state.infos.types.map((type, i) => {
                                 return (
-                                    <text key={'type' + i}>{type.type.name + ' '}</text>
+                                    <img style={{width: '60px', height:'60px'}}
+                                         src={'./Types/' + type.type.name + '.png'}/>
                                 )
                             })}
                             </td>
                             <Table>
                                 <Tbody>
                                     <Tr>
-                                        <td>
-                                            <div onClick={() => this.select(this.state.base.id)}>
-                                                <img src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + this.state.base.id + '.png'} alt={this.state.base.name}/>
-                                                <p>{this.state.base.name}</p>
-                                            </div>
-                                        </td>
+                                        {this.state.first_evolve.length !== 0 ?
+                                            <td>
+                                                <div onClick={() => this.select(this.state.base.id)}>
+                                                    <img
+                                                        src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + this.state.base.id + '.png'}
+                                                        alt={this.state.base.name}/>
+                                                    <p>{this.state.base.name}</p>
+                                                </div>
+                                            </td>
+                                        : null}
                                         <td style={ this.state.first_evolve.length > 1 ? {'height': '400px', 'overflow':'scroll', 'display': 'block'} : {overflow: 'none'}}>
                                         {this.state.first_evolve.map((pokemon, i) => {
                                             return (
@@ -236,43 +241,50 @@ class App extends Component {
                 return (
                     <div className="App">
                         <header className="App-header">
-                            <img src={logo} className="App-logo" alt="logo"/>
+                            <img src={'./logo.png'} className="App-logo" alt="logo" style={{height: '250px'}}/>
                             {this.state.offset !== 0 ?
                                 <p onClick={() => this.next(this.state.offset - this.state.my_limit, this.state.my_limit, this.state.data)}>PREV</p>
                                 : null}
                             {this.state.offset !== 800 ?
                             <p onClick={() => this.next(this.state.offset + this.state.my_limit, this.state.my_limit, this.state.data)}>NEXT</p>
                                 : null}
-                            <Table>
-                                <Tbody>
+                            <Grid container spacing={4} style={{ alignItems: 'center', justifyContent: 'center', display: 'flex'}}>
                                 {this.state.results.map((pokemon, i) => {
                                         i = i + this.state.offset + 1;
-                                    return (
-                                        <Tr key={pokemon.url} onClick={() => this.select(i)} style={{backgroundColor: pokemon.infos !== undefined ? pokemon.infos.types[0].color : null}}>
-                                            <Td>
-                                                <img key={pokemon.name}
-                                                     src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + i + '.png'}
-                                                     alt={pokemon.name}/>
-                                            </Td>
-                                            <Td>
-                                                <p key={i}>{i} - {pokemon.name}</p>
-                                                {pokemon.infos !== undefined ?
-                                                    (
-                                                        <div>
-                                                            {pokemon.infos.types.map((type, i) => {
-                                                                return (
-                                                                    <text key={'type' + i}> {type.type.name + ' '}</text>
-                                                                )
-                                                            })}
-                                                        </div>
-                                                    ) : null
-                                                }
-                                            </Td>
-                                        </Tr>
-                                    )
+                                            return (
+                                                <Grid item xs={2.5} spacing={1} key={pokemon.url} onClick={() => this.select(i)} style={{ alignItems: 'center', justifyContent: 'center', display: 'flex'}}>
+                                                    <div style={{border: '1px solid', borderColor: pokemon.infos !== undefined ? pokemon.infos.types[0].color : null}}>
+                                                        <img key={pokemon.name}
+                                                             src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + i + '.png'}
+                                                             alt={pokemon.name}/>
+                                                    {pokemon.infos !== undefined ?
+                                                        <Td style={{width: '300px'}}>
+                                                            <p key={i}>{i} - {pokemon.name}</p>
+                                                            {pokemon.infos !== undefined ?
+                                                                (
+                                                                    <div>
+                                                                        {pokemon.infos.types.map((type, i) => {
+                                                                            return (
+                                                                                <img style={{
+                                                                                    width: '60px',
+                                                                                    height: '60px'
+                                                                                }}
+                                                                                     src={'./Types/' + type.type.name + '.png'}/>
+                                                                            )
+                                                                        })}
+                                                                    </div>
+                                                                ) : null
+                                                            }
+                                                        </Td>
+                                                        :
+                                                        null
+                                                    }
+                                                    </div>
+                                                </Grid>
+                                            )
                                 })}
-                                </Tbody>
-                            </Table>
+                            </Grid>
+                            <br/>
                         </header>
                     </div>
                 );
