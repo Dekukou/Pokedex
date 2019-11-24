@@ -214,19 +214,22 @@ class App extends Component {
                                         )
                                     }) : null}
                             </Grid>
-
-                            {/*LIST PKM*/}
-
                             <Grid item xs={3} style={{alignItems: 'center', justifyContent: 'center', display: 'flex'}}>
                                 <img src={'./logo.png'} className="App-logo" alt="logo" style={{height: '250px'}}/>
                             </Grid>
                             <Grid container item xs={4} spacing={1} style={{
                                 alignItems: 'center',
                                 justifyContent: 'center',
-                                display: 'flex'
+                                display: 'flex',
+                                height: '250px',
+                                overflow: 'scroll'
                             }}>
-                                <Grid item xs={1}
-                                      style={{alignItems: 'center', justifyContent: 'center', display: 'flex'}}>
+                                <Grid item xs={2.5} spacing={1} key={10}>
+                                    <div style={{
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        display: 'flex'
+                                    }}>
                                     <button style={{
                                         background: this.state.my_limit == 10 ? "blue" : "red",
                                         borderRadius: "10px",
@@ -240,9 +243,14 @@ class App extends Component {
                                                 this.next(this.state.offset, 10, this.state.data)
                                             }}>10
                                     </button>
+                                    </div>
                                 </Grid>
-                                <Grid item xs={1}
-                                      style={{alignItems: 'center', justifyContent: 'center', display: 'flex'}}>
+                                <Grid item xs={2.5} spacing={1} key={20}>
+                                    <div style={{
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        display: 'flex'
+                                    }}>
                                     <button style={{
                                         background: this.state.my_limit == 20 ? "blue" : "red",
                                         borderRadius: "10px",
@@ -256,9 +264,14 @@ class App extends Component {
                                                 this.next(this.state.offset, 20, this.state.data)
                                             }}>20
                                     </button>
+                                    </div>
                                 </Grid>
-                                <Grid item xs={1}
-                                      style={{alignItems: 'center', justifyContent: 'center', display: 'flex'}}>
+                                <Grid item xs={2.5} spacing={1} key={30}>
+                                    <div style={{
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        display: 'flex'
+                                    }}>
                                     <button style={{
                                         background: this.state.my_limit == 30 ? "blue" : "red",
                                         borderRadius: "10px",
@@ -272,9 +285,14 @@ class App extends Component {
                                                 this.next(this.state.offset, 30, this.state.data)
                                             }}>30
                                     </button>
+                                    </div>
                                 </Grid>
-                                <Grid item xs={1}
-                                      style={{alignItems: 'center', justifyContent: 'center', display: 'flex'}}>
+                                <Grid item xs={2.5} spacing={1} key={40}>
+                                    <div style={{
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        display: 'flex'
+                                    }}>
                                     <button style={{
                                         background: this.state.my_limit == 40 ? "blue" : "red",
                                         borderRadius: "10px",
@@ -288,9 +306,14 @@ class App extends Component {
                                                 this.next(this.state.offset, 40, this.state.data)
                                             }}>40
                                     </button>
+                                    </div>
                                 </Grid>
-                                <Grid item xs={1}
-                                      style={{alignItems: 'center', justifyContent: 'center', display: 'flex'}}>
+                                <Grid item xs={2.5} spacing={1} key={50}>
+                                    <div style={{
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        display: 'flex'
+                                    }}>
                                     <button style={{
                                         background: this.state.my_limit == 50 ? "blue" : "red",
                                         borderRadius: "10px",
@@ -304,6 +327,7 @@ class App extends Component {
                                                 this.next(this.state.offset, 50, this.state.data)
                                             }}>50
                                     </button>
+                                    </div>
                                 </Grid>
                             </Grid>
                         </Grid>
