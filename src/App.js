@@ -227,28 +227,83 @@ class App extends Component {
                             }}>
                                 <Grid item xs={1}
                                       style={{alignItems: 'center', justifyContent: 'center', display: 'flex'}}>
-                                    <button style={{background: this.state.my_limit == 10 ? "blue" : "red", borderRadius: "10px",fontSize: "15px", color: "white", height: "25px", width: "50px"}}
-                                            onClick={() => {this.setState({my_limit: 10}); this.next(this.state.offset, 10, this.state.data)}}>10</button>
+                                    <button style={{
+                                        background: this.state.my_limit == 10 ? "blue" : "red",
+                                        borderRadius: "10px",
+                                        fontSize: "15px",
+                                        color: "white",
+                                        height: "25px",
+                                        width: "50px"
+                                    }}
+                                            onClick={() => {
+                                                this.setState({my_limit: 10});
+                                                this.next(this.state.offset, 10, this.state.data)
+                                            }}>10
+                                    </button>
                                 </Grid>
                                 <Grid item xs={1}
                                       style={{alignItems: 'center', justifyContent: 'center', display: 'flex'}}>
-                                    <button style={{background: this.state.my_limit == 20 ? "blue" : "red", borderRadius: "10px",fontSize: "15px", color: "white", height: "25px", width: "50px"}}
-                                            onClick={() => {this.setState({my_limit: 20}); this.next(this.state.offset, 20, this.state.data)}}>20</button>
+                                    <button style={{
+                                        background: this.state.my_limit == 20 ? "blue" : "red",
+                                        borderRadius: "10px",
+                                        fontSize: "15px",
+                                        color: "white",
+                                        height: "25px",
+                                        width: "50px"
+                                    }}
+                                            onClick={() => {
+                                                this.setState({my_limit: 20});
+                                                this.next(this.state.offset, 20, this.state.data)
+                                            }}>20
+                                    </button>
                                 </Grid>
                                 <Grid item xs={1}
                                       style={{alignItems: 'center', justifyContent: 'center', display: 'flex'}}>
-                                    <button style={{background: this.state.my_limit == 30 ? "blue" : "red", borderRadius: "10px",fontSize: "15px", color: "white", height: "25px", width: "50px"}}
-                                            onClick={() => {this.setState({my_limit: 30}); this.next(this.state.offset, 30, this.state.data)}}>30</button>
+                                    <button style={{
+                                        background: this.state.my_limit == 30 ? "blue" : "red",
+                                        borderRadius: "10px",
+                                        fontSize: "15px",
+                                        color: "white",
+                                        height: "25px",
+                                        width: "50px"
+                                    }}
+                                            onClick={() => {
+                                                this.setState({my_limit: 30});
+                                                this.next(this.state.offset, 30, this.state.data)
+                                            }}>30
+                                    </button>
                                 </Grid>
                                 <Grid item xs={1}
                                       style={{alignItems: 'center', justifyContent: 'center', display: 'flex'}}>
-                                    <button style={{background: this.state.my_limit == 40 ? "blue" : "red", borderRadius: "10px",fontSize: "15px", color: "white", height: "25px", width: "50px"}}
-                                            onClick={() => {this.setState({my_limit: 40}); this.next(this.state.offset, 40, this.state.data)}}>40</button>
+                                    <button style={{
+                                        background: this.state.my_limit == 40 ? "blue" : "red",
+                                        borderRadius: "10px",
+                                        fontSize: "15px",
+                                        color: "white",
+                                        height: "25px",
+                                        width: "50px"
+                                    }}
+                                            onClick={() => {
+                                                this.setState({my_limit: 40});
+                                                this.next(this.state.offset, 40, this.state.data)
+                                            }}>40
+                                    </button>
                                 </Grid>
                                 <Grid item xs={1}
                                       style={{alignItems: 'center', justifyContent: 'center', display: 'flex'}}>
-                                    <button style={{background: this.state.my_limit == 50 ? "blue" : "red", borderRadius: "10px",fontSize: "15px", color: "white", height: "25px", width: "50px"}}
-                                            onClick={() => {this.setState({my_limit: 50}); this.next(this.state.offset, 50, this.state.data)}}>50</button>
+                                    <button style={{
+                                        background: this.state.my_limit == 50 ? "blue" : "red",
+                                        borderRadius: "10px",
+                                        fontSize: "15px",
+                                        color: "white",
+                                        height: "25px",
+                                        width: "50px"
+                                    }}
+                                            onClick={() => {
+                                                this.setState({my_limit: 50});
+                                                this.next(this.state.offset, 50, this.state.data)
+                                            }}>50
+                                    </button>
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -388,7 +443,12 @@ class App extends Component {
                                         <p style={{fontSize: "20px"}}>Moves</p>
                                     </div>
                                     <div>
-                                        <p style={{textDecorationLine: 'underline',position: "absolute", left: 20, fontSize: "17px"}}>Natural
+                                        <p style={{
+                                            textDecorationLine: 'underline',
+                                            position: "absolute",
+                                            left: 20,
+                                            fontSize: "17px"
+                                        }}>Natural
                                             Moves</p>
                                         <br/>
                                         <div style={{maxHeight: '300px', overflow: 'scroll'}}>
@@ -407,7 +467,12 @@ class App extends Component {
                                                         : null)
                                             })}
                                         </div>
-                                        <p style={{textDecorationLine: 'underline',position: "absolute", left: 20, fontSize: "17px"}}>Machine
+                                        <p style={{
+                                            textDecorationLine: 'underline',
+                                            position: "absolute",
+                                            left: 20,
+                                            fontSize: "17px"
+                                        }}>Machine
                                             Moves</p>
                                         <br/>
                                         <div style={{maxHeight: '300px', overflow: 'scroll'}}>
@@ -426,7 +491,12 @@ class App extends Component {
                                                         : null)
                                             })}
                                         </div>
-                                        <p style={{textDecorationLine: 'underline',position: "absolute", left: 20, fontSize: "17px"}}>Tutor
+                                        <p style={{
+                                            textDecorationLine: 'underline',
+                                            position: "absolute",
+                                            left: 20,
+                                            fontSize: "17px"
+                                        }}>Tutor
                                             Moves</p>
                                         <br/>
                                         <div style={{maxHeight: '300px', overflow: 'scroll'}}>
@@ -445,7 +515,12 @@ class App extends Component {
                                                         : null)
                                             })}
                                         </div>
-                                        <p style={{textDecorationLine: 'underline',position: "absolute", left: 20, fontSize: "17px"}}>Egg Moves</p>
+                                        <p style={{
+                                            textDecorationLine: 'underline',
+                                            position: "absolute",
+                                            left: 20,
+                                            fontSize: "17px"
+                                        }}>Egg Moves</p>
                                         <br/>
                                         <div style={{maxHeight: '300px', overflow: 'scroll'}}>
                                             {this.state.infos.moves.sort((a, b) => a.move.name - b.move.name).map((move, i) => {
@@ -522,6 +597,25 @@ class App extends Component {
                                         <br/>
                                         <br/>
                                         <p style={{fontSize: "20px"}}>Sprites</p>
+                                    </div>
+                                    <div>
+                                        {this.state.infos.sprites.front_default !== null ?
+                                            <img src={this.state.infos.sprites.front_default}/> : null}
+                                        {this.state.infos.sprites.front_female !== null ?
+                                            <img src={this.state.infos.sprites.front_female}/> : null}
+                                        {this.state.infos.sprites.front_shiny !== null ?
+                                            <img src={this.state.infos.sprites.front_shiny}/> : null}
+                                        {this.state.infos.sprites.front_shiny_female !== null ?
+                                            <img src={this.state.infos.sprites.front_shiny_female}/> : null}
+                                        <br/>
+                                        {this.state.infos.sprites.back_default !== null ?
+                                            <img src={this.state.infos.sprites.back_default}/> : null}
+                                        {this.state.infos.sprites.back_female !== null ?
+                                            <img src={this.state.infos.sprites.back_female}/> : null}
+                                        {this.state.infos.sprites.back_shiny !== null ?
+                                            <img src={this.state.infos.sprites.back_shiny}/> : null}
+                                        {this.state.infos.sprites.back_shiny_female !== null ?
+                                            <img src={this.state.infos.sprites.back_shiny_female}/> : null}
                                     </div>
                                 </div>
                             </div>
